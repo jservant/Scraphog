@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
     public GameObject shot;
     public Transform shotSpawn;
     public float autoFireDelay;
+    [Space()]
+    public float clampMinX;
+    public float clampMaxX;
+    public float clampMinY;
+    public float clampMaxY;
 
     bool canFire = true;
 
@@ -26,6 +31,10 @@ public class PlayerController : MonoBehaviour
         float moveV = Input.GetAxis("Vertical");
         Vector2 move = new Vector2(moveH, moveV);
         rb.velocity = move * speed;
+        if (transform.position.x < clampMinX) transform.position = new Vector2(clampMinX, transform.position.y);
+        if (transform.position.x > clampMaxX) transform.position = new Vector2(clampMaxX, transform.position.y);
+        if (transform.position.y < clampMinY) transform.position = new Vector2(transform.position.x, clampMinY);
+        if (transform.position.y > clampMaxY) transform.position = new Vector2(transform.position.x, clampMaxY);
 
         if (Input.GetButton("Jump") && canFire)
         {

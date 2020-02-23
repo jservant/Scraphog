@@ -6,8 +6,12 @@ public class PlayerController : MonoBehaviour
 {
     public float speed;
     public int dmgLevel;
+    public float shotDestroyDelay;
     public GameObject shot;
     public Transform shotSpawn;
+    public float autoFireDelay;
+
+    bool canFire = true;
 
     Rigidbody2D rb;
 
@@ -23,14 +27,23 @@ public class PlayerController : MonoBehaviour
         Vector2 move = new Vector2(moveH, moveV);
         rb.velocity = move * speed;
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButton("Jump") && canFire)
         {
             Shoot();
+            StartCoroutine(ShotCooldown());
         }
     }
 
     void Shoot()
     {
-        Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        GameObject projectile = Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+        Destroy(projectile, shotDestroyDelay);
+    }
+
+    IEnumerator ShotCooldown()
+    {
+        canFire = false;
+        yield return new WaitForSeconds(autoFireDelay);
+        canFire = true;
     }
 }

@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
         {
             for (int i = 0; i < enemiesInWave; i++)
             {
-                Vector2 spawnPosition = new Vector2(Random.Range(-5, 5), 6);
+                Vector2 spawnPosition = new Vector2(Random.Range(-4, 4), 6);
                 Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPosition, Quaternion.identity);
                 // Possibly randomize enemy
                 yield return new WaitForSeconds(enemyDelay);

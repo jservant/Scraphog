@@ -117,12 +117,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74543792e7b9a7a4ca4b67e67569a1f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0, y: 0}
   shot: {fileID: 2883015066670911267, guid: 44d54adac1e6db345a16ee86b12f5e8c, type: 3}
   shotSpawn: {fileID: 934933878153594897}
   minShotDelay: 0.5
   maxShotDelay: 1
   points: 100
+  health: 10
   moveSpeed: 1
   frequency: 10
   magnitude: 0.5

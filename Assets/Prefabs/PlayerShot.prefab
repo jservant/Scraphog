@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9153391433304581447}
   - component: {fileID: 641880318304921097}
   - component: {fileID: 7830147245943576224}
+  - component: {fileID: -4368519409970210506}
   m_Layer: 0
   m_Name: PlayerShot
   m_TagString: Untagged
@@ -164,3 +165,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 10}
+--- !u!114 &-4368519409970210506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5833723369828244863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa3a6abed10cb14db6eeb4529a6ce2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToHit: Enemy
+  playerExplosion: {fileID: 4442343137847995844, guid: 7b756a847d186e64ba592636822ed648,
+    type: 3}
+  enemyExplosion: {fileID: 4442343137847995844, guid: 7b756a847d186e64ba592636822ed648,
+    type: 3}

@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float maxShotDelay;
     public int points;
     public int health;
-    
+    [Space()]
     [SerializeField] float moveSpeed; // Vertical movement speed
     [SerializeField] float frequency; // How often object goes left and right
     [SerializeField] float magnitude; // The highest/lowest points the object will go in the wave

@@ -154,9 +154,9 @@ MonoBehaviour:
   maxShotDelay: 1
   points: 1000
   health: 10
-  moveSpeed: 1
-  frequency: 10
-  magnitude: 0.5
+  moveSpeed: 2.5
+  frequency: 5
+  magnitude: 0.35
 --- !u!50 &3683015407291987850
 Rigidbody2D:
   serializedVersion: 4

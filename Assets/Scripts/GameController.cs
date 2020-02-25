@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -10,6 +11,9 @@ public class GameController : MonoBehaviour
 
     public int enemiesInWave;
     public GameObject[] enemyPrefabs;
+
+    public int score;
+    public Text scoreText;
 
     void Start()
     {
@@ -30,5 +34,11 @@ public class GameController : MonoBehaviour
             }
             yield return new WaitForSeconds(waveDelay);
         }
+    }
+
+    public void AddToScore(int points)
+    {
+        score += points;
+        scoreText.text = "SCORE: " + score.ToString();
     }
 }

@@ -1,29 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public float shotDestroyDelay;
+    public float autoFireDelay;
+    public float immunityLength;
+    [Space()]
+    public int powerLevel;
     public int gearXP;
     public int dmgLevel;
-    public float shotDestroyDelay;
+    [Space()]
     public GameObject shot;
     public Transform shotSpawn;
-    public float autoFireDelay;
+    public Text levelText;
+    public GameObject gameOverPanel;
     [Space()]
     public float clampMinX;
     public float clampMaxX;
     public float clampMinY;
     public float clampMaxY;
-
+    [Space()]
     bool canFire = true;
+    public bool canBeHit = true;
 
+    SpriteRenderer sr;
     Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
+        levelText.text = "P: " + powerLevel;
     }
 
     void Update()
@@ -43,9 +54,30 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(ShotCooldown());
         }
 
-        if (gearXP >= 10)
+        if (powerLevel == 3)
+        {
+            dmgLevel = 15;
+        }
+        else if (powerLevel == 2)
+        {
+            dmgLevel = 10;
+        }
+        else if (powerLevel == 1)
         {
             dmgLevel = 5;
+        }
+        
+        //Level Up!
+        if (gearXP >= 5)
+        {
+            powerLevel++;
+            levelText.text = "P: " + powerLevel;
+            gearXP = 0;
+            if (powerLevel >= 4)
+            {
+                powerLevel = 3;
+                levelText.text = "P: " + powerLevel;
+            }
         }
     }
 
@@ -60,5 +92,36 @@ public class PlayerController : MonoBehaviour
         canFire = false;
         yield return new WaitForSeconds(autoFireDelay);
         canFire = true;
+    }
+
+    public void LoseALevel()
+    {
+        powerLevel--;
+        gearXP = 0;
+        levelText.text = "";
+        if (powerLevel <= 0)
+        {
+            levelText.text = "P: 0";
+            Destroy(gameObject);
+        }
+        else
+        {
+            StartCoroutine(ImmunityCooldown());
+            levelText.text += "P: " + powerLevel;
+        }
+    }
+
+    IEnumerator ImmunityCooldown()
+    {
+        canBeHit = false;
+        sr.color = Color.gray;
+        yield return new WaitForSeconds(immunityLength);
+        canBeHit = true;
+        sr.color = Color.white;
+    }
+
+    private void OnDestroy()
+    {
+        gameOverPanel.SetActive(true);
     }
 }

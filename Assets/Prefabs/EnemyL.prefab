@@ -103,7 +103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7823993351900353309, guid: 2a798cd81d5412148ae832874a725083,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -152,8 +152,8 @@ MonoBehaviour:
   shotSpawn: {fileID: 5223824052619688636}
   minShotDelay: 0.5
   maxShotDelay: 1
-  points: 1000
-  health: 10
+  points: 50
+  health: 40
   moveSpeed: 2.5
   frequency: 5
   magnitude: 0.35

@@ -15,13 +15,19 @@ public class Shots : MonoBehaviour
             if (tagToHit == "Enemy")
             {
                 other.GetComponent<Enemy>().health -= GameObject.FindWithTag("Player").GetComponent<PlayerController>().dmgLevel;
-                //1 is there for debugging purposes, when the gear mechanic is functional change one to this line:
-                //other.GetComponent<PlayerController>().dmgLevel
+                if (other.GetComponent<Enemy>().health <= 0)
+                {
+                    int points = other.GetComponent<Enemy>().points;
+                    GameObject.FindWithTag("GameController").GetComponent<GameController>().AddToScore(points);
+                }
             }
-
-            if (tagToHit == "Player" && gameObject.CompareTag("Pickup"))
+            else if (tagToHit == "Player" && gameObject.CompareTag("Pickup"))
             {
-                other.GetComponent<PlayerController>().gearXP += 1;
+                other.GetComponent<PlayerController>().gearXP++;
+            }
+            else if (tagToHit == "Player" && other.GetComponent<PlayerController>().canBeHit == true)
+            {
+                other.GetComponent<PlayerController>().LoseALevel();
             }
             Destroy(gameObject);
         }

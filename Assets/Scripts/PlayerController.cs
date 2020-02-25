@@ -103,6 +103,7 @@ public class PlayerController : MonoBehaviour
         {
             levelText.text = "P: 0";
             Destroy(gameObject);
+            gameOverPanel.SetActive(true);
         }
         else
         {
@@ -118,10 +119,5 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(immunityLength);
         canBeHit = true;
         sr.color = Color.white;
-    }
-
-    private void OnDestroy()
-    {
-        gameOverPanel.SetActive(true);
     }
 }

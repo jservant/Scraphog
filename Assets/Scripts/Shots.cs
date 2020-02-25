@@ -12,22 +12,29 @@ public class Shots : MonoBehaviour
     {
         if (other.CompareTag(tagToHit))
         {
-            if (tagToHit == "Enemy")
+            if (tagToHit == "Enemy") // Player shooting Enemy
             {
                 other.GetComponent<Enemy>().health -= GameObject.FindWithTag("Player").GetComponent<PlayerController>().dmgLevel;
                 if (other.GetComponent<Enemy>().health <= 0)
                 {
                     int points = other.GetComponent<Enemy>().points;
                     GameObject.FindWithTag("GameController").GetComponent<GameController>().AddToScore(points);
+                    Instantiate(enemyExplosion, other.transform.position, other.transform.rotation);
                 }
             }
-            else if (tagToHit == "Player" && gameObject.CompareTag("Pickup"))
+            else if (tagToHit == "Player" && gameObject.CompareTag("Pickup")) // Gear touching Player
             {
                 other.GetComponent<PlayerController>().gearXP++;
+                int points = 5;
+                GameObject.FindWithTag("GameController").GetComponent<GameController>().AddToScore(points);
             }
-            else if (tagToHit == "Player" && other.GetComponent<PlayerController>().canBeHit == true)
+            else if (tagToHit == "Player" && other.GetComponent<PlayerController>().canBeHit == true) // Enemy shooting Player when not invincible
             {
                 other.GetComponent<PlayerController>().LoseALevel();
+                if (other.GetComponent<PlayerController>().powerLevel <= 0)
+                {
+                    Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+                }
             }
             Destroy(gameObject);
         }

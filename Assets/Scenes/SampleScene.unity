@@ -688,6 +688,7 @@ MonoBehaviour:
   shot: {fileID: 5833723369828244863, guid: 9130c0cfd4ed81d4ca7ba4fa3af82f6c, type: 3}
   shotSpawn: {fileID: 1128647215}
   levelText: {fileID: 1232649533}
+  gameOverPanel: {fileID: 497701399}
   clampMinX: -3.5
   clampMaxX: 3
   clampMinY: -4.75
@@ -826,9 +827,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startDelay: 1
-  enemyDelay: 2
+  enemyDelay: 1.5
   waveDelay: 5
-  enemiesInWave: 5
+  enemiesInWave: 10
   enemyPrefabs:
   - {fileID: 934933877787904500, guid: dbc333ff652855d4887ed44e2b114e3b, type: 3}
   - {fileID: 7666321987265920406, guid: f22fb2593a1a79c48a2e1c2747955746, type: 3}
@@ -1282,7 +1283,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'SCORE: 00'
+  m_Text: 'SCORE: 0'
 --- !u!222 &2014771969
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 6239342556148993330}
   - component: {fileID: 3556678994646994566}
   - component: {fileID: 8805711658406902512}
+  - component: {fileID: 213925001290428213}
   m_Layer: 0
   m_Name: EnemyM
   m_TagString: Enemy
@@ -204,3 +205,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &213925001290428213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7666321987265920406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa3a6abed10cb14db6eeb4529a6ce2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tagToHit: Player
+  playerExplosion: {fileID: 4442343137847995844, guid: 7b756a847d186e64ba592636822ed648,
+    type: 3}
+  enemyExplosion: {fileID: 4442343137847995844, guid: 7b756a847d186e64ba592636822ed648,
+    type: 3}

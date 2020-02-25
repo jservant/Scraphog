@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public int gearXP;
     public int dmgLevel;
     public float shotDestroyDelay;
     public GameObject shot;
@@ -40,6 +41,11 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
             StartCoroutine(ShotCooldown());
+        }
+
+        if (gearXP >= 10)
+        {
+            dmgLevel = 5;
         }
     }
 

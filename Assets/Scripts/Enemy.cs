@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject shot;
+    public GameObject gear;
     public Transform shotSpawn;
     public float minShotDelay;
     public float maxShotDelay;
@@ -41,5 +42,10 @@ public class Enemy : MonoBehaviour
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             yield return new WaitForSeconds(Random.Range(minShotDelay, maxShotDelay));
         }
+    }
+
+    private void OnDestroy()
+    {
+        Instantiate(gear, shotSpawn.position, shotSpawn.rotation);
     }
 }

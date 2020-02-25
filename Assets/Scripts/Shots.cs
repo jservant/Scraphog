@@ -14,10 +14,16 @@ public class Shots : MonoBehaviour
         {
             if (tagToHit == "Enemy")
             {
-                other.GetComponent<Enemy>().health -= 1;
+                other.GetComponent<Enemy>().health -= GameObject.FindWithTag("Player").GetComponent<PlayerController>().dmgLevel;
                 //1 is there for debugging purposes, when the gear mechanic is functional change one to this line:
                 //other.GetComponent<PlayerController>().dmgLevel
             }
+
+            if (tagToHit == "Player" && gameObject.CompareTag("Pickup"))
+            {
+                other.GetComponent<PlayerController>().gearXP += 1;
+            }
+            Destroy(gameObject);
         }
     }
 }

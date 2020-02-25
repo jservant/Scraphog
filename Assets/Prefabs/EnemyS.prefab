@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 2883015066670911267, guid: 44d54adac1e6db345a16ee86b12f5e8c, type: 3}
+  gear: {fileID: 5861705756011271593, guid: ec866401d6454dc499572e47645fda5f, type: 3}
   shotSpawn: {fileID: 934933878153594897}
   minShotDelay: 0.5
   maxShotDelay: 1

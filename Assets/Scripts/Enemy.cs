@@ -31,6 +31,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
+            Instantiate(gear, shotSpawn.position, shotSpawn.rotation);
         }
     }
 
@@ -42,10 +43,5 @@ public class Enemy : MonoBehaviour
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
             yield return new WaitForSeconds(Random.Range(minShotDelay, maxShotDelay));
         }
-    }
-
-    private void OnDestroy()
-    {
-        Instantiate(gear, shotSpawn.position, shotSpawn.rotation);
     }
 }
